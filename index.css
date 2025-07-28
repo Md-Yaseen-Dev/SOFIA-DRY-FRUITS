@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar while maintaining scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(200, 97%, 77%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+
+  /* Indian Heritage Color Palette */
+  --primary-blue: hsl(220, 90%, 56%); /* Vibrant royal blue #2563eb */
+  --accent-blue: hsl(215, 100%, 60%); /* Bright blue accent #3b82f6 */
+  --dark-blue: hsl(210, 100%, 40%); /* Deep blue #0c4a6e */
+  --gold-accent: hsl(45, 100%, 51%); /* Luxury gold #fbbf24 */
+  --deep-black: hsl(0, 0%, 8%); /* Rich black #141414 */
+  --light-gray: hsl(210, 20%, 98%); /* Soft gray background */
+  --saffron-orange: hsl(25, 100%, 60%); /* Indian Saffron #ff9933 */
+  --heritage-green: hsl(120, 89%, 28%); /* Indian Green #138808 */
+  --temple-gold: hsl(43, 74%, 49%); /* Temple Gold #daa520 */
+  --terracotta: hsl(14, 50%, 55%); /* Indian Terracotta #cd5c5c */
+  --peacock-blue: hsl(204, 100%, 37%); /* Peacock Blue #007bbf */
+  --turmeric-yellow: hsl(48, 100%, 51%); /* Turmeric #ffc107 */
+  --royal-purple: hsl(270, 50%, 40%); /* Royal Purple #663399 */
+  --lotus-pink: hsl(351, 100%, 86%); /* Lotus Pink #ffb6c1 */
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(200, 97%, 77%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: "Proxima Nova", "Montserrat", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Typography Hierarchy */
+  h1 {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  h2 {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  
+  h4 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 500;
+    line-height: 1.4;
+  }
+}
+
+@layer utilities {
+  .text-primary-blue {
+    color: var(--primary-blue);
+  }
+  
+  .bg-primary-blue {
+    background-color: var(--primary-blue);
+  }
+  
+  .text-accent-blue {
+    color: var(--accent-blue);
+  }
+  
+  .bg-accent-blue {
+    background-color: var(--accent-blue);
+  }
+  
+  .text-dark-blue {
+    color: var(--dark-blue);
+  }
+  
+  .bg-dark-blue {
+    background-color: var(--dark-blue);
+  }
+  
+  .text-deep-black {
+    color: var(--deep-black);
+  }
+  
+  .bg-deep-black {
+    background-color: var(--deep-black);
+  }
+  
+  .bg-light-gray {
+    background-color: var(--light-gray);
+  }
+
+  .text-gold-accent {
+    color: var(--gold-accent);
+  }
+  
+  .bg-gold-accent {
+    background-color: var(--gold-accent);
+  }
+  
+  .hover\:text-gold-accent:hover {
+    color: var(--gold-accent);
+  }
+  
+  .hover\:bg-gold-accent:hover {
+    background-color: var(--gold-accent);
+  }
+
+  .hover\:text-primary-blue:hover {
+    color: var(--primary-blue);
+  }
+  
+  .hover\:bg-primary-blue:hover {
+    background-color: var(--primary-blue);
+  }
+
+  /* Typography Classes */
+  .text-nav {
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  
+  .text-product-title {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  
+  .text-price {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  
+  .text-price-small {
+    font-size: 1rem; /* 16px */
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  
+  .text-header-1 {
+    font-size: 2.5rem; /* 40px */
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  .text-header-2 {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  .text-header-3 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  
+  .text-header-4 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* Active state styles for navigation */
+  .headerLeftTab .active button {
+    color: var(--primary-blue);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+    border-bottom-color: var(--primary-blue);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+  }
+
+  .headerLeftTab button:focus {
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+  }
+
+  /* Premium gradient effects */
+  .gradient-primary {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+  }
+  
+  .gradient-gold {
+    background: linear-gradient(135deg, var(--gold-accent), hsl(38, 100%, 50%));
+  }
+
+  /* Hide scrollbar for horizontal scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
+
+  /* Responsive breakpoint adjustments */
+  @media (max-width: 768px) {
+    .text-nav {
+      font-size: 0.8rem;
+    }
+  }
+}

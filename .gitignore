@@ -1,0 +1,11 @@
+node_modules
+.next
+dist
+.DS_Store
+server/public
+vite.config.ts.*
+*.tar.gz
+.next/app-build-manifest.json
+.next/build-manifest.json
+.next/trace
+attached_assets
