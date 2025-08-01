@@ -5,10 +5,9 @@ import { Heart, Star, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useUnifiedToast } from "@/hooks/use-unified-toast";
-import { LocalStorageManager } from "@/lib/mock-data";
+import { LocalStorageManager, Product } from "@/lib/mock-data";
 import Image from "next/image";
 
-import type { Product } from '@/types/api';
 
 interface ProductCardProps {
   product: Product;
