@@ -1,4 +1,4 @@
-// Static data for Shifa Rah e-commerce website - Complete replacement for API calls
+// Static data for SOFIA e-commerce website - Complete replacement for API calls
 
 // Mock brands data
 export const brands = [

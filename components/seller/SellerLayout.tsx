@@ -204,7 +204,7 @@ export default function SellerLayout({ children, currentUser }: SellerLayoutProp
           <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
             <div className="flex flex-col">
               <div className="text-lg font-bold tracking-tight">
-                <span className="text-orange-400">Indi</span><span className="text-green-600">Vendi</span>
+                <span className="text-orange-400"></span><span className="text-green-600">SOFIA</span>
               </div>
               <div className="text-xs font-medium tracking-widest uppercase text-orange-300">
                 SELLER HUB
@@ -308,7 +308,7 @@ export default function SellerLayout({ children, currentUser }: SellerLayoutProp
               </button>
               <div className="lg:hidden ml-2 flex flex-col">
                 <div className="text-lg font-bold tracking-tight">
-                  <span className="text-orange-400">Indi</span><span className="text-green-600">Vendi</span>
+                  <span className="text-orange-400"></span><span className="text-green-600">SOFIA</span>
                 </div>
                 <div className="text-xs font-medium tracking-widest uppercase text-orange-300">
                   SELLER HUB

@@ -1,5 +1,5 @@
 
 export const metadata = {
-  title: 'Shifa Nour - Dry Fruits',
+  title: 'SOFIA - Dry Fruits',
   description: 'Discover authentic dry fruits from India',
 }

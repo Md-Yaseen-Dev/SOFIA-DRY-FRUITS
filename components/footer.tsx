@@ -69,7 +69,7 @@ export default function Footer() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  aria-label="Shifa Nour Trust Badge"
+                  aria-label="SOFIA  Trust Badge"
                 >
                   <path
                     strokeLinecap="round"
@@ -79,7 +79,7 @@ export default function Footer() {
                   />
                 </svg>
               </div>
-              <p className="text-xs font-semibold text-green-400">Shifa Nour Trust</p>
+              <p className="text-xs font-semibold text-green-400">SOFIA  Trust</p>
             </div>
             <div className="text-center">
               <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
@@ -242,15 +242,15 @@ export default function Footer() {
             onClick={() => router.push("/")}
           >
             <h2 className="text-2xl font-bold tracking-tight group-hover:text-white transition-colors duration-200">
-              <span className="text-white">Shifa</span>
-              <span className="text-green-500">Nour</span>
+              {/* <span className="text-white">Al-Falah</span> */}
+              <span className="text-green-500">SOFIA</span>
             </h2>
             <p className="text-orange-300 text-xs font-semibold tracking-widest uppercase">
-              Dry Fruits
+              Dry Fruits 
             </p>
           </div>
           <p className="text-neutral-400 text-xs">
-            © 2025 Shifa Nour. Powered by Shaik Mohammad Yaseen 
+            © 2025 Sofia House. Powered by Shaik Mohammad Yaseen 
           </p>
           <div className="flex justify-center gap-4 text-xs mt-2">
             <a href="#" className="text-neutral-400 hover:text-white transition-colors">Terms of Service</a>

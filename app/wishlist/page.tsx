@@ -75,7 +75,7 @@ export default function WishlistPage() {
         product: {
           id: item.id,
           name: item.name,
-          brand: 'KISAH',
+          brand: 'SOFIA',
           imageUrl: item.imageUrl,
           originalPrice: item.originalPrice,
           salePrice: item.salePrice || item.price,

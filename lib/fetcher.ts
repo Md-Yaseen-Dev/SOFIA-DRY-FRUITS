@@ -1,7 +1,5 @@
 import { staticFetcher } from './mock-data';
 
-const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://indivendi-dev-as.azurewebsites.net/api/v1';
-
 // Simulate API responses with static data
 export const fetcher = async (url: string) => {
   console.log('Static fetching:', url);

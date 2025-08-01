@@ -23,7 +23,7 @@ export default function LoginSuccess() {
         </button>
         <div className="mb-6 w-full flex flex-col items-center justify-center">
   <div className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-center">
-    <span className="text-orange-400">Indi</span><span className="text-green-600">Vendi</span>
+    <span className="text-orange-400"></span><span className="text-green-600">SOFIA</span>
   </div>
   <div className="text-xs font-medium tracking-widest uppercase text-center">
     BY ARTISANS OF BHARAT

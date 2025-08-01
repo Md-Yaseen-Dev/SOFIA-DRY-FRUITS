@@ -4,14 +4,13 @@ import { useParams, useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { useAddToCartToast } from "@/hooks/use-add-to-cart-toast";
 import { useUnifiedToast } from "@/hooks/use-unified-toast";
-import { LocalStorageManager } from "@/lib/mock-data";
+import { LocalStorageManager, Product } from "@/lib/mock-data";
 import { Heart, ArrowLeft, Share2, ShoppingCart, Plus, Minus, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import ProductInfoIcons from "./ProductInfoIcons";
 import SubmitRFQButton from "./SubmitRFQButton";
 import MessageVendorButton from "./MessageVendorButton";
 import AddressSelectorModal from "@/components/AddressSelectorModal";
 import { useProduct } from "@/hooks/use-product";
-import type { Product } from '@/types/api';
 import Link from 'next/link';
 import { useMainCategories } from "@/hooks/use-main-categories";
 
@@ -107,7 +106,7 @@ export default function ProductDetailPage() {
         product: {
           id: product.id,
           name: product.name,
-          brand: 'KISAH',
+          brand: 'SOFIA',
           imageUrl: product?.image_url || '/placeholder.png',
           originalPrice: product.price,
           salePrice: product.on_offer ? (product.price * 0.9).toFixed(2) : product.price,
@@ -291,7 +290,7 @@ export default function ProductDetailPage() {
         <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-2 gap-4 md:gap-6 bg-white">
 
           {/* Left Column - Images */}
-          <div className="md:col-span-3 lg:col-span-1 h-[400px] md:h-[500px] lg:h-[600px] flex items-start justify-center">
+          <div className="md:col-span-3 lg:col-span-1 h-[100px] md:h-[500px] lg:h-[600px] flex items-start justify-center">
             <div className="flex gap-2 md:gap-3 w-full h-full">
               {/* Thumbnail Images - Vertical on desktop/tablet, horizontal on mobile */}
               <div className="flex flex-row md:flex-col gap-2 md:gap-3 flex-shrink-0 md:w-auto w-full justify-center md:justify-start overflow-x-auto md:overflow-visible pb-2 md:pb-0 md:pr-1">
@@ -462,12 +461,12 @@ export default function ProductDetailPage() {
 
                 {/* Brand & Title */}
                 <div className="space-y-1">
-                  <div className="text-xs font-medium text-gray-600 uppercase tracking-wide">KISAH</div>
+                  <div className="text-xs font-medium text-gray-600 uppercase tracking-wide">SOFIA</div>
                   <h1 className="text-base md:text-lg font-medium text-gray-900 leading-snug">
                     {product.name}
                   </h1>
                   <p className="text-xs text-gray-500">
-                    Sold by <span className="font-medium text-gray-700">Premium Artisan Collective</span>
+                    Sold by <span className="font-medium text-gray-700">SOFIA Dry Fruits</span>
                   </p>
                 </div>
 
@@ -486,37 +485,7 @@ export default function ProductDetailPage() {
                     Minimum Order: <span className="font-medium text-gray-800">2 Pieces</span>
                   </div>
 
-                  {/* Pricing Table */}
-                  <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-                    <div className="bg-gray-50 rounded-t-lg">
-                      <div className="grid grid-cols-3 gap-0">
-                        <div className="px-4 py-2 font-medium text-gray-700 text-sm">Quantity</div>
-                        <div className="px-4 py-2 font-medium text-gray-700 text-sm">Price/piece</div>
-                        <div className="px-4 py-2 font-medium text-gray-700 text-sm">Total</div>
-                      </div>
-                    </div>
-
-                    <div className="bg-white">
-                      {/* Current quantity range highlighted */}
-                      <div className="grid grid-cols-3 gap-0 bg-orange-50 border-b border-gray-200">
-                        <div className="px-4 py-2 text-gray-700 text-sm">2-5 pieces</div>
-                        <div className="px-4 py-2 font-medium text-gray-900 text-sm">₹5,789</div>
-                        <div className="px-4 py-2 font-medium text-gray-900 text-sm">₹11,578</div>
-                      </div>
-
-                      <div className="grid grid-cols-3 gap-0 border-b border-gray-200">
-                        <div className="px-4 py-2 text-gray-700 text-sm">6-10 pieces</div>
-                        <div className="px-4 py-2 font-medium text-gray-900 text-sm">₹5,389</div>
-                        <div className="px-4 py-2 font-medium text-gray-900 text-sm">₹32,334</div>
-                      </div>
-
-                      <div className="grid grid-cols-3 gap-0">
-                        <div className="px-4 py-2 text-gray-700 text-sm">11+ pieces</div>
-                        <div className="px-4 py-2 font-medium text-gray-900 text-sm">₹4,989</div>
-                        <div className="px-4 py-2 font-medium text-gray-900 text-sm">Contact for quote</div>
-                      </div>
-                    </div>
-                  </div>
+                 
                 </div>
 
                 {/* Size Selection */}
@@ -627,10 +596,10 @@ export default function ProductDetailPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col md:flex-row gap-2">
+                  {/* <div className="flex flex-col md:flex-row gap-2">
                     <SubmitRFQButton />
                     <MessageVendorButton />
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Delivery Address & Check */}
@@ -831,7 +800,7 @@ function ProductInfoTabs() {
   const [activeTab, setActiveTab] = useState('style');
 
   const tabs = [
-    { id: 'style', label: 'STYLE NOTE & FEATURES' },
+    { id: 'style', label: 'FEATURES' },
     { id: 'return', label: 'RETURN & REPLACEMENT POLICY' },
     { id: 'manufacturer', label: 'MANUFACTURER DETAILS' }
   ];
@@ -963,7 +932,7 @@ function ReturnPolicyContent() {
           <div className="bg-gray-50 rounded p-3">
             <h4 className="text-sm font-medium text-gray-900 mb-1">Need Help?</h4>
             <p className="text-gray-700 text-xs">
-              Contact our customer service at <span className="text-orange-600 font-medium">support@indivendi.com</span> or 
+              Contact our customer service at <span className="text-orange-600 font-medium">support@sofia.com</span> or 
               call <span className="text-orange-600 font-medium">+91-9876543210</span>
             </p>
           </div>

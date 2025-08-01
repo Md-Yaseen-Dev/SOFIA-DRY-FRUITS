@@ -6,16 +6,16 @@ const ShifaRahTerms = () => {
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-xl font-bold text-gray-800 mb-2">
-        Shifa Nour : TERMS AND CONDITIONS
+         SOFIA : TERMS AND CONDITIONS
         </h1>
         
       </div>
 
       {/* Content */}
       <div className="space-y-6 text-gray-700 leading-relaxed">
-      <p className="text-lg text-gray-600">Welcome to Shifa Nour!</p>
+      <p className="text-lg text-gray-600">Welcome to SOFIA!</p>
         <p>
-          The portals www.Shifa Nour.com ("Shifa Nour") and the corresponding mobile application (collectively, "Platforms"), are managed and operated by Reliance Retail Limited ("Reliance", "we", "us" or "our"). Any natural or legal person who accesses and/or uses the Platforms in any manner ("you" or "your") or uses any current or future service or functionality or offer made available on the Platforms ("Service") will be subject to these terms and conditions for use of the Platforms ("Terms"), as updated from time to time. Your access to Services, other platforms or utilisation of Products (defined below), offers or promotions in relation to the Products, as may be provided by us or our affiliates, may be governed by other terms and conditions, policies or guidelines ("Additional Terms") along with these Terms. If these Terms are inconsistent with such Additional Terms, the Additional Terms will control to the extent of such inconsistency with respect to the applicable Service or utilisation of the Product.
+          The portals www.SOFIA.com ("SOFIA") and the corresponding mobile application (collectively, "Platforms"), are managed and operated by Reliance Retail Limited ("Reliance", "we", "us" or "our"). Any natural or legal person who accesses and/or uses the Platforms in any manner ("you" or "your") or uses any current or future service or functionality or offer made available on the Platforms ("Service") will be subject to these terms and conditions for use of the Platforms ("Terms"), as updated from time to time. Your access to Services, other platforms or utilisation of Products (defined below), offers or promotions in relation to the Products, as may be provided by us or our affiliates, may be governed by other terms and conditions, policies or guidelines ("Additional Terms") along with these Terms. If these Terms are inconsistent with such Additional Terms, the Additional Terms will control to the extent of such inconsistency with respect to the applicable Service or utilisation of the Product.
         </p>
 
         <p>
@@ -83,11 +83,11 @@ const ShifaRahTerms = () => {
                 <p className="mb-2">
                   In order to purchase Products on the Platforms and/or avail Services thereof, you will have to register on the Platform. Registration is a one-time process and is free of cost.
                 </p>
-                <p className="mb-2">You may register on Shifa Nour in one of the following ways:</p>
+                <p className="mb-2">You may register on SOFIA in one of the following ways:</p>
                 <div className="ml-4 space-y-2">
                   <div className="flex items-start space-x-2">
                     <span className="text-sm">a.</span>
-                    <p>Creating an Shifa Nour account: by providing the relevant information for the creation of your account on Shifa Rah and after filling in the necessary forms and providing the necessary details as may be required by us at the time of your registration. Following this, an account will be created by Reliance for you.</p>
+                    <p>Creating an SOFIA account: by providing the relevant information for the creation of your account on SOFIA and after filling in the necessary forms and providing the necessary details as may be required by us at the time of your registration. Following this, an account will be created by Reliance for you.</p>
                   </div>
                   <div className="flex items-start space-x-2">
                     <span className="text-sm">b.</span>
@@ -392,9 +392,9 @@ const ShifaRahTerms = () => {
               </p>
             </div>
             <div className="ml-6 space-y-2">
-              <p><strong>Name:</strong> Anirban Chatterjee</p>
+              <p><strong>Name:</strong> Shaik Mohammad Yaseen</p>
               <p><strong>Designation:</strong> Grievance Officer</p>
-              <p><strong>Email Address:</strong> grievance.officer@ajio.com</p>
+              <p><strong>Email Address:</strong> ysn6040@gmail.com</p>
             </div>
           </div>
         </section>

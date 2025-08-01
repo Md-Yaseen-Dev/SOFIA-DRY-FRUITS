@@ -128,7 +128,7 @@ export default function SignUpModal({ isOpen, onClose, onSwitchToSignIn }: SignU
 
         {/* Branding */}
         <div className="flex flex-col items-center pt-0 pb-4 px-2 border-orange-100">
-          <div className="text-2xl font-bold text-orange-400">Indi<span className="text-green-600">Vendi</span></div>
+          <div className="text-2xl font-bold text-orange-400"><span className="text-green-600">SOFIA</span></div>
           <div className="text-xs font-medium text-orange-300 tracking-widest uppercase">
             BY ARTISANS OF BHARAT
           </div>

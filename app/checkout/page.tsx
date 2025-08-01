@@ -370,7 +370,7 @@ export default function CheckoutPage() {
               </Button>
               <div className="flex flex-col items-start">
                 <div className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-deep-black">
-                  <span className="text-orange-400">Indi</span><span className="text-green-600">Vendi</span>
+                  <span className="text-orange-400"></span><span className="text-green-600">SOFIA</span>
                 </div>
                 <div className="text-xs font-medium tracking-widest uppercase text-orange-300">
                   SECURE CHECKOUT

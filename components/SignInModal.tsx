@@ -289,10 +289,10 @@ export default function SignInModal({ isOpen, onClose, onSwitchToSignUp }: SignI
 
         <div className="flex flex-col items-center mb-6">
           <div className="text-2xl font-bold text-orange-400">
-            Indi<span className="text-green-600">Vendi</span>
+            <span className="text-green-600">SOFIA</span>
           </div>
           <div className="text-xs font-medium text-orange-300 tracking-widest uppercase">
-            BY ARTISANS OF BHARAT
+            Dry Fruits 
           </div>
         </div>
 
@@ -584,7 +584,7 @@ export default function SignInModal({ isOpen, onClose, onSwitchToSignUp }: SignI
 
         {!forgotPassword && (
           <div className="mt-8 text-center text-sm text-gray-600">
-            New to Shifa Nour?
+            New to SOFIA?
             <button
               className="text-orange-500 hover:underline font-medium ml-1"
               onClick={onSwitchToSignUp}

@@ -6,7 +6,7 @@ import LayoutContent from './layout-content';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Shifa Nour - Dry Fruits',
+  title: 'SOFIA - Dry Fruits',
   description: 'Discover authentic Indian products from artisans across Bharat',
 }
 

@@ -209,17 +209,17 @@ export default function Header() {
 
           {/* Main Header Bar */}
           <div className={`relative z-50 ${isAuthModalOpen ? 'pointer-events-none' : ''}`}>
-            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`relative flex w-full items-center h-16 px-2 sm:px-0 transition-all duration-300 ${isAuthModalOpen ? 'opacity-50 blur-sm' : ''}`}>
+            <nav className="max-w-7xl mx-auto  sm:px-6 lg:px-8">
+              <div className={`relative flex w-full items-center pl-2 md:pl-0  h-16 md:px-2 sm:px-0 transition-all duration-300 ${isAuthModalOpen ? 'opacity-50 blur-sm' : ''}`}>
                 {/* Logo */}
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
                     <Link href="/" className="flex flex-col items-start">
                       <div className={`text-lg md:text-xl lg:text-2xl font-bold tracking-tight ${pathname === "/" && !scrolled ? "text-white" : "text-deep-black"}`}>
-                        <span className="text-green-600">Shifa</span><span className={`${ pathname === "/" && !scrolled ? "text-white" : "text-deep-sky-blue"}`}>Nour</span>
+                        <span className="text-green-600">SOFIA</span><span className={`${ pathname === "/" && !scrolled ? "text-white" : "text-deep-sky-blue"}`}></span>
                       </div>
                       <div className={`text-xs font-medium tracking-widest uppercase ${pathname === "/" && !scrolled ? "text-orange-200" : "text-orange-300"}`}>
-                        Dry Fruits
+                        Dry Fruits 
                       </div>
                     </Link>
                   </div>
@@ -248,9 +248,9 @@ export default function Header() {
                 </div>
 
                 {/* Right Icons */}
-                <div className="flex items-center space-x-2">
+                <div className="flex justify-end items-center space-x-2 ml-auto md:ml-0">
                   {/* User Icon with Dropdown */}
-                  <div className="relative" ref={userDropdownRef}>
+                  <div className="relative " ref={userDropdownRef}>
                     <button
                       className={`p-2 rounded-full transition-all duration-200 flex items-center space-x-1 ${pathname === "/" ? "hover:bg-white/20" : "hover:bg-gray-100"}`}
                       onClick={handleUserIconClick}
@@ -375,7 +375,7 @@ export default function Header() {
               <div className="flex items-center justify-between p-4 border-b">
                 <Link href="/" className="flex flex-col items-start">
                   <div className="text-xl font-bold text-deep-black">
-                    <span className="text-orange-400">Indi</span><span className="text-green-600">Vendi</span>
+                    <span className="text-orange-400"></span><span className="text-green-600">SOFIA</span>
                   </div>
                   <div className="text-xs font-medium text-orange-300 tracking-widest uppercase">
                     BY ARTISANS OF BHARAT

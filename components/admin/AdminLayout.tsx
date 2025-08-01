@@ -175,7 +175,7 @@ export default function AdminLayout({ children, currentUser }: AdminLayoutProps)
           <div className="sticky top-0 z-50 flex items-center justify-between h-16 px-6 bg-slate-900 border-b border-slate-800 flex-shrink-0">
             <div className="flex flex-col pointer-events-none">
               <div className="text-xl font-bold tracking-tight">
-                <span className="text-orange-400">Indi</span><span className="text-green-400">Vendi</span>
+                <span className="text-orange-400"></span><span className="text-green-400">SOFIA</span>
               </div>
               <div className="text-xs font-semibold tracking-widest uppercase text-slate-400 flex items-center">
                 <Shield className="h-3 w-3 mr-1" />
@@ -269,7 +269,7 @@ export default function AdminLayout({ children, currentUser }: AdminLayoutProps)
               </button>
               <div className="lg:hidden flex flex-col">
                 <div className="text-lg font-bold tracking-tight">
-                  <span className="text-orange-500">Indi</span><span className="text-green-600">Vendi</span>
+                  <span className="text-orange-500"></span><span className="text-green-600">SOFIA</span>
                 </div>
                 <div className="text-xs font-medium tracking-widest uppercase text-slate-500 flex items-center">
                   <Shield className="h-3 w-3 mr-1" />

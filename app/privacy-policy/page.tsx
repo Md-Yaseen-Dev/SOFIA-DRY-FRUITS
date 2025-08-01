@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">Introduction</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              We value the trust you place in us and recognize the importance of secure transactions and information privacy. This Privacy Policy describes how Shifa Nour Private Limited and its affiliates (collectively "Shifa Nour, we, our, us") collect, use, share, protect or otherwise process your personal data through Shifa Nour website https://www.indivendi.com.
+              We value the trust you place in us and recognize the importance of secure transactions and information privacy. This Privacy Policy describes how  SOFIA Dry Fruits and its affiliates (collectively "SOFIA, we, our, us") collect, use, share, protect or otherwise process your personal data through  SOFIA website https://www.sofia.com.
             </p>
             <p className="text-gray-600 leading-relaxed mb-4">
               While you may be able to browse certain sections of the Platform without registering with us, however, please note we do not offer any product/service under this Platform outside India and your personal data will primarily be stored and processed in India.
@@ -146,7 +146,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">Links to Other Sites</h2>
             <p className="text-gray-600 leading-relaxed">
-              Our Platform links to other websites that may collect personal data about you. Shifa Rah is not responsible for the privacy practices or the content of those linked websites.
+              Our Platform links to other websites that may collect personal data about you. SOFIA is not responsible for the privacy practices or the content of those linked websites.
             </p>
           </section>
 
@@ -179,7 +179,7 @@ const PrivacyPolicy = () => {
               We use third-party advertising companies to serve ads when you visit our Platform. These companies may use information (not including your name, address, email address, or telephone number) about your visits to this Platform and other websites in order to provide advertisements about goods and services of interest to you.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              You have an option to opt-out from tracking of personalised advertising using the "Opt out of Ads Personalization" settings using your device's settings application. Shifa Nour will have no access to your GAID once you select this feature.
+              You have an option to opt-out from tracking of personalised advertising using the "Opt out of Ads Personalization" settings using your device's settings application. SOFIA will have no access to your GAID once you select this feature.
             </p>
           </section>
 
@@ -204,7 +204,7 @@ const PrivacyPolicy = () => {
               Please note, that deletion of account will not be retroactive and will be in accordance with the terms of this Privacy Policy, related Terms of Use and applicable laws. Once the account is deleted, you will lose access to the account. To access the Platform again you would need to register as a new user on our Platform.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              We retain your personal data information for a period no longer than is required for the purpose for which it was collected or as required under any applicable law. However, we may retain data related to you if we believe it may be necessary to prevent fraud or future abuse; to enable Shifa Rah to exercise its legal rights and/or defend against legal claims; or for other legitimate purposes. We may continue to retain your data in anonymised form for analytical and research purposes.
+              We retain your personal data information for a period no longer than is required for the purpose for which it was collected or as required under any applicable law. However, we may retain data related to you if we believe it may be necessary to prevent fraud or future abuse; to enable SOFIA to exercise its legal rights and/or defend against legal claims; or for other legitimate purposes. We may continue to retain your data in anonymised form for analytical and research purposes.
             </p>
           </section>
 
@@ -260,11 +260,11 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">Grievance Officer</h2>
             <div className="bg-gray-100 p-6 rounded-lg">
-              <p className="text-gray-700 mb-2"><strong>Name:</strong> Mr. Arshwaal Singh</p>
-              <p className="text-gray-700 mb-2"><strong>Designation:</strong> Manager - CC - Social Media</p>
-              <p className="text-gray-700 mb-2"><strong>Company:</strong> Shifa Rah <span className="text-gray-700 text-xs">BY ARTISANS OF BHARAT</span></p>
-              <p className="text-gray-700 mb-2"><strong>Address:</strong> Alyssa, Begonia and Clover situated in Embassy Tech Village, Outer Ring Road, Devarabeesanahalli Village, Varthur Hobli, Bengaluru, Karnataka-: 560103, India</p>
-              <p className="text-gray-700 mb-2"><strong>Email:</strong> customergrievance@indivendi.com</p>
+              <p className="text-gray-700 mb-2"><strong>Name:</strong> Mr. Shaik Mohammad Yaseen</p>
+              <p className="text-gray-700 mb-2"><strong>Designation:</strong> Manager</p>
+              <p className="text-gray-700 mb-2"><strong>Company:</strong> SOFIA <span className="text-gray-700 text-xs">Dry Fruits</span></p>
+              <p className="text-gray-700 mb-2"><strong>Address:</strong> Railway Station Road, near Jamiya Masjid, main road, Guntakal – 515801, Andhra Pradesh, India</p>
+              <p className="text-gray-700 mb-2"><strong>Email:</strong> customergrievance@sofia.com</p>
               <p className="text-gray-700 mb-2"><strong>Phone:</strong> 080-61561999</p>
               <p className="text-gray-700 mb-4"><strong>Time:</strong> Monday - Friday (9:00 - 18:00)</p>
               <p className="text-gray-700"><strong>Customer Support:</strong> You can reach our customer support team to address any of your queries or complaints through our contact page.</p>

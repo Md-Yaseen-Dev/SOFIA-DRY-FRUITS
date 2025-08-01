@@ -16,8 +16,8 @@ export default function HomePage() {
       <IndianArtisanBanner />
       <FeaturedProducts />
       <DiscoverCategories />
-      <SpotlightBanner />
-      <BrandShowcase />
+      {/* <SpotlightBanner /> */}
+      {/* <BrandShowcase /> */}
     </>
   );
 }
