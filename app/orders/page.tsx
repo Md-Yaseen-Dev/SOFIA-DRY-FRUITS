@@ -14,7 +14,7 @@ export default function OrdersPage() {
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Check authentication on mount
+  // Check authentication on mountM
   useEffect(() => {
     const user = MockUserAuth.getCurrentUser();
     const isLoggedIn = MockUserAuth.isLoggedIn();
@@ -105,10 +105,10 @@ export default function OrdersPage() {
               >
                 <ArrowLeft className="h-4 w-4" />
               </Button>
-              <h1 className="text-2xl font-bold text-gray-900">My Orders</h1>
+              <h1 className="md:text-2xl text-sm font-bold text-gray-900">My Orders</h1>
             </div>
-            <div className="text-sm text-gray-600">
-              Welcome, {currentUser?.name}
+            <div className="md:text-sm text-xs text-gray-600 font-medium mb-3 ">
+              Welcome, {currentUser?.name.split(" ")[0].slice(0, 1).toUpperCase() + currentUser?.name.split(" ")[0].slice(1, 8)}
             </div>
           </div>
         </div>
@@ -191,7 +191,7 @@ export default function OrdersPage() {
                       const productImage = item.product_image || product?.image_url;
 
                       return (
-                        <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                        <div key={index} className="flex flex-col sm:flex-row sm:items-center gap-3 p-3 bg-gray-50 rounded-lg">
                           <div 
                           className="w-16 h-16 bg-gray-200 rounded-lg flex-shrink-0 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity"
                           onClick={() => router.push(`/product/${item.product_id}`)}
@@ -209,10 +209,10 @@ export default function OrdersPage() {
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-gray-900 truncate">
+                            <p className="text-sm sm:text-base font-medium text-gray-900 break-words whitespace-normal">
                               {productName}
                             </p>
-                            <div className="text-xs text-gray-600 space-y-1">
+                            <div className="text-xs sm:text-sm text-gray-600 space-y-1 mt-1">
                               <p>Qty: {item.quantity} × ₹{item.price.toFixed(2)}</p>
                               {item.size && <p>Size: {item.size}</p>}
                               {item.color && <p>Color: {item.color}</p>}

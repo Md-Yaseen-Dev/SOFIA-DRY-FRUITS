@@ -23,8 +23,8 @@ export default function ProductDetailPage() {
 
   const { product, isLoading, isError } = useProduct(productId);
 
-  const [selectedSize, setSelectedSize] = useState<string>("S");
-  const [quantity, setQuantity] = useState(2); // Start with minimum order quantity
+  const [selectedWeight, setSelectedWeight] = useState<string>("250g");
+  const [quantity, setQuantity] = useState(1); // Start with minimum order quantity (number of packs)
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
@@ -92,7 +92,7 @@ export default function ProductDetailPage() {
     const cart = LocalStorageManager.getCart();
     const existingItem = cart.find((item: any) => 
       item.productId === product.id && 
-      item.size === selectedSize
+      item.weight === selectedWeight
     );
 
     if (existingItem) {
@@ -102,7 +102,7 @@ export default function ProductDetailPage() {
         id: Date.now(),
         productId: product.id,
         quantity,
-        size: selectedSize,
+        weight: selectedWeight,
         product: {
           id: product.id,
           name: product.name,
@@ -287,13 +287,13 @@ export default function ProductDetailPage() {
         <DynamicBreadcrumb product={product} />
 
         {/* Main Product Layout - Responsive */}
-        <div className="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-2 gap-4 md:gap-6 bg-white">
+        <div className="flex flex-col md:grid md:grid-cols-5 lg:grid-cols-2 gap-4 md:gap-6 bg-white">
 
           {/* Left Column - Images */}
-          <div className="md:col-span-3 lg:col-span-1 h-[100px] md:h-[500px] lg:h-[600px] flex items-start justify-center">
-            <div className="flex gap-2 md:gap-3 w-full h-full">
+          <div className="w-full order-1 md:order-none md:col-span-3 lg:col-span-1 md:h-[500px] lg:h-[600px] flex items-start justify-center">
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3 w-full h-full">
               {/* Thumbnail Images - Vertical on desktop/tablet, horizontal on mobile */}
-              <div className="flex flex-row md:flex-col gap-2 md:gap-3 flex-shrink-0 md:w-auto w-full justify-center md:justify-start overflow-x-auto md:overflow-visible pb-2 md:pb-0 md:pr-1">
+              <div className="flex flex-row md:flex-col gap-2 md:gap-3 flex-shrink-0 w-full md:w-auto justify-center md:justify-start overflow-x-auto md:overflow-visible pb-2 md:pb-0 md:pr-1">
                 {viewTypes.map((view, index) => {
                   return (
                     <button
@@ -373,7 +373,7 @@ export default function ProductDetailPage() {
               </div>
 
               {/* Main Image */}
-              <div className="flex-1 relative group h-full min-h-0">
+              <div className="w-full h-64 md:flex-1 md:h-full relative group min-h-0">
                 <div 
                   className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 cursor-zoom-in h-full rounded-lg shadow-sm border border-gray-200"
                   onMouseEnter={() => setIsZoomed(true)}
@@ -455,7 +455,7 @@ export default function ProductDetailPage() {
           </div>
 
           {/* Right Column - Product Information */}
-          <div className="md:col-span-2 lg:col-span-1 h-auto lg:h-[600px] flex flex-col">
+          <div className="w-full order-2 md:order-none md:col-span-2 lg:col-span-1 h-auto lg:h-[600px] flex flex-col">
             <div className="flex-1 lg:overflow-y-auto lg:scrollbar-thin lg:scrollbar-thumb-gray-300 lg:scrollbar-track-gray-100 lg:pr-2">
               <div className="space-y-4">
 
@@ -481,43 +481,29 @@ export default function ProductDetailPage() {
                       </span>
                     )}
                   </div>
-                  <div className="text-xs text-gray-600 mb-2">
-                    Minimum Order: <span className="font-medium text-gray-800">2 Pieces</span>
-                  </div>
 
                  
                 </div>
 
-                {/* Size Selection */}
+                {/* Weight Selection */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-medium text-gray-900">Size</h3>
-                    <button
-                      onClick={() => setShowSizeGuide(true)}
-                      className="text-orange-500 hover:text-orange-600 text-xs font-medium transition-colors"
-                    >
-                      Size Guide
-                    </button>
+                    <h3 className="text-sm font-medium text-gray-900">Weight</h3>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
-                    {["XS", "S", "M", "L", "XL", "XXL"].map((size) => {
-                      const isDisabled = size === "L";
-                      const isSelected = selectedSize === size;
-
+                    {["250g", "500g", "1kg"].map((weight) => {
+                      const isSelected = selectedWeight === weight;
                       return (
                         <button
-                          key={size}
-                          onClick={() => !isDisabled && setSelectedSize(size)}
-                          disabled={isDisabled}
+                          key={weight}
+                          onClick={() => setSelectedWeight(weight)}
                           className={`px-3 py-2 md:py-1.5 border rounded text-sm font-medium transition-all duration-200 min-h-[44px] md:min-h-[32px] flex items-center justify-center min-w-[44px] md:min-w-[32px] ${
-                            isDisabled
-                              ? "border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed"
-                              : isSelected
+                            isSelected
                               ? "border-orange-500 bg-orange-500 text-white"
                               : "border-gray-300 bg-white text-gray-700 hover:border-orange-300"
                           }`}
                         >
-                          {size}
+                          {weight}
                         </button>
                       );
                     })}
@@ -544,7 +530,7 @@ export default function ProductDetailPage() {
                         <Plus className="w-3 h-3" />
                       </button>
                     </div>
-                    <span className="text-xs text-gray-500">pieces available</span>
+                    <span className="text-xs text-gray-500">packs available</span>
                   </div>
                 </div>
 

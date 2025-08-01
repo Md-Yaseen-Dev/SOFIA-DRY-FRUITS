@@ -135,17 +135,30 @@ export default function ProductCard({ product }: ProductCardProps) {
     // Dispatch wishlist update event
     window.dispatchEvent(new CustomEvent('wishlistUpdated'));
   };
+
   const currentPrice = product.salePrice ? parseFloat(product.salePrice) : parseFloat(product.price?.toString() || '0');
   const originalPrice = product.originalPrice ? parseFloat(product.originalPrice.toString()) : null;
   const hasDiscount = originalPrice && originalPrice > currentPrice;
   const discountPercentage = hasDiscount ? Math.round(((originalPrice - currentPrice) / originalPrice) * 100) : null;
+
+  // Get main product image logic (same as detail page)
+  const getMainProductImage = (product: Product) => {
+    if (product.images && product.images.length > 0 && product.images[0]) {
+      return product.images[0];
+    }
+    if (product.image_url) return product.image_url;
+    if (product.imageUrl) return product.imageUrl;
+    return '/placeholder.png';
+  };
+
+  const mainProductImage = getMainProductImage(product);
 
   return (
     <div className="group cursor-pointer bg-white hover:shadow-lg transition-shadow duration-300 rounded-lg overflow-hidden border border-gray-200 max-w-xs" onClick={handleCardClick}>
       <div className="block">
         <div className="relative overflow-hidden bg-gray-50">
           <Image
-            src={product.image_url || '/placeholder.png'}
+            src={mainProductImage}
             alt={product.name}
             width={400}
             height={400}
