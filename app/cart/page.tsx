@@ -14,13 +14,13 @@ interface CartItemWithProduct {
   id: number;
   productId: number;
   quantity: number;
-  size?: string;
+  weight?: string;
   color?: string;
   product: {
     id: number;
     name: string;
     brand: string;
-    imageUrl: string;
+    imageUrl?: string;
     originalPrice: string;
     salePrice?: string;
   };
@@ -138,6 +138,26 @@ export default function CartPage() {
     };
   }, [isMounted]);
 
+  const handleWeightChange = (productId: number, newWeight: string) => {
+    const updatedCart = cartItems.map(item => {
+      if (item.productId === productId) {
+        const newPrice = getPriceForWeight(item.product, newWeight);
+        return {
+          ...item,
+          weight: newWeight,
+          product: {
+            ...item.product,
+            salePrice: newPrice.toString(),
+          }
+        };
+      }
+      return item;
+    });
+    LocalStorageManager.setCart(updatedCart);
+    setCartItems(updatedCart);
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
+  };
+
   const updateQuantity = (productId: number, newQuantity: number) => {
     if (newQuantity === 0) {
       removeFromCart(productId);
@@ -172,11 +192,22 @@ export default function CartPage() {
     });
   };
 
+  // Helper to recalculate price based on weight
+  const getPriceForWeight = (product: any, weight: string) => {
+    const basePrice = product.salePrice ? parseFloat(product.salePrice) : parseFloat(product.originalPrice || product.price || "0");
+    if (weight === "500g") {
+      return Math.ceil((basePrice / 2) * 1.05);
+    } else if (weight === "250g") {
+      return Math.ceil((basePrice / 4) * 1.08);
+    }
+    return basePrice;
+  };
+
   const calculateSubtotal = () => {
     return cartItems.reduce((total, item) => {
       const product = item.product || {};
-      const price = parseFloat(product.salePrice || product.originalPrice || "0");
-      return total + (price * item.quantity);
+      const currentPrice = getPriceForWeight(product, item.weight || "1kg");
+      return total + (currentPrice * item.quantity);
     }, 0);
   };
 
@@ -184,8 +215,8 @@ export default function CartPage() {
     return cartItems.reduce((discount, item) => {
       const product = item.product || {};
       const originalPrice = parseFloat(product.originalPrice || "0");
-      const salePrice = parseFloat(product.salePrice || product.originalPrice || "0");
-      if (product.salePrice && salePrice < originalPrice) {
+      const salePrice = getPriceForWeight(product, item.weight || "1kg");
+      if (salePrice < originalPrice) {
         return discount + ((originalPrice - salePrice) * item.quantity);
       }
       return discount;
@@ -230,7 +261,7 @@ export default function CartPage() {
       id: item.productId,
       name: item.product.name,
       price: parseFloat(item.product.salePrice || item.product.originalPrice || "0"),
-      imageUrl: item.product.imageUrl,
+      image_url: item.product.imageUrl,
       originalPrice: parseFloat(item.product.originalPrice || "0"),
       salePrice: item.product.salePrice,
     };
@@ -353,9 +384,9 @@ export default function CartPage() {
             <div className="space-y-4">
               {cartItems.map((item, index) => {
                 const product = item.product || {};
-                const currentPrice = parseFloat(product.salePrice || product.originalPrice || "0");
+                const currentPrice = getPriceForWeight(product, item.weight || "1kg");
                 const originalPrice = parseFloat(product.originalPrice || "0");
-                const hasDiscount = product.salePrice && currentPrice < originalPrice;
+                const hasDiscount = currentPrice < originalPrice;
                 const discountPercent = hasDiscount ? Math.round(((originalPrice - currentPrice) / originalPrice) * 100) : 0;
 
                 return (
@@ -369,7 +400,7 @@ export default function CartPage() {
                             className="hover:opacity-80 transition-opacity cursor-pointer w-full"
                           >
                             <img
-                              src={product.imageUrl || '/placeholder-image.jpg'}
+                              src={product.imageUrl || '/placeholder.png'}
                               alt={product.name || 'Product'}
                               className="sm:w-20 sm:h-24 w-full h-48 object-cover rounded border border-gray-200"
                             />
@@ -387,16 +418,17 @@ export default function CartPage() {
                                 {product.brand || 'Unknown Brand'}
                               </p>
 
-                              {/* Size and Color */}
+                              {/* Weight Selector */}
                               <div className="flex items-center gap-3 md:gap-4 mb-3">
-                                <span className="text-xs md:text-sm text-gray-600">Size: <span className="font-medium">M</span></span>
-                                <span className="text-xs md:text-sm text-gray-600">Color: <span className="font-medium">Blue</span></span>
+                              
+                                <p>{item.weight}</p>
+                                <span className="ml-2 text-gray-600 text-xs">Weight</span>
                               </div>
 
                               {/* Price */}
-                              <div className="flex items-center gap-2 mb-3">
-                                <span className="text-base md:text-lg font-semibold text-gray-900">
-                                  ₹{currentPrice.toLocaleString()}
+                              <div className="flex items-center gap-2 mt-2">
+                                <span className="font-semibold text-lg text-orange-600">
+                                  ₹{getPriceForWeight(product, item.weight || "1kg") * item.quantity}
                                 </span>
                                 {hasDiscount && (
                                   <>

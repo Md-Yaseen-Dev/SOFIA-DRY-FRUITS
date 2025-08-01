@@ -23,7 +23,7 @@ export default function ProductDetailPage() {
 
   const { product, isLoading, isError } = useProduct(productId);
 
-  const [selectedWeight, setSelectedWeight] = useState<string>("250g");
+  const [selectedWeight, setSelectedWeight] = useState<string>("1kg");
   const [quantity, setQuantity] = useState(1); // Start with minimum order quantity (number of packs)
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -77,7 +77,7 @@ export default function ProductDetailPage() {
 
   const handleQuantityChange = (delta: number) => {
     const newQuantity = quantity + delta;
-    if (newQuantity >= 2) { // Minimum order is 2
+    if (newQuantity >= 1) { // Minimum order is 2
       setQuantity(newQuantity);
     }
   };
@@ -107,7 +107,7 @@ export default function ProductDetailPage() {
           id: product.id,
           name: product.name,
           brand: 'SOFIA',
-          imageUrl: product?.image_url || '/placeholder.png',
+          imageUrl: getMainProductImage(product),
           originalPrice: product.price,
           salePrice: product.on_offer ? (product.price * 0.9).toFixed(2) : product.price,
         }
@@ -121,7 +121,7 @@ export default function ProductDetailPage() {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.image_url || '/placeholder.png'
+      image: getMainProductImage(product)
     });
   };
 
@@ -151,7 +151,7 @@ export default function ProductDetailPage() {
         id: product.id,
         name: product.name,
         price: product.price,
-        imageUrl: product.image_url || '/placeholder.png',
+        imageUrl: getMainProductImage(product),
         originalPrice: product.price,
         salePrice: product.on_offer ? (product.price * 0.9).toFixed(2) : product.price.toString(),
       };
@@ -225,16 +225,30 @@ export default function ProductDetailPage() {
   }
 
   // Calculate prices from actual product data
-  const currentPrice = product.salePrice ? 
+  const basePrice = product.salePrice ? 
     parseFloat(product.salePrice.toString()) : 
     parseFloat(product.price?.toString() || '0');
 
-  const originalPrice = product.originalPrice ? 
-    parseFloat(product.originalPrice.toString()) : 
-    (product.on_offer ? currentPrice * 1.2 : currentPrice); // If on offer but no original price, estimate
+  let recalculatedPrice = basePrice;
+  if (selectedWeight === "500g") {
+    recalculatedPrice = Math.ceil((basePrice / 2) * 1.05);
+  } else if (selectedWeight === "250g") {
+    recalculatedPrice = Math.ceil(((basePrice / 4) * 1.08));
+  }
 
-  const hasDiscount = originalPrice > currentPrice;
-  const discountPercentage = hasDiscount ? Math.round(((originalPrice - currentPrice) / originalPrice) * 100) : 0;
+  let originalPrice: number;
+  if (selectedWeight === "500g") {
+    originalPrice = parseFloat(product.originalPrice || "0") /2; // 500g to 1kg
+  } else if (selectedWeight === "250g") {
+    originalPrice = parseFloat(product.originalPrice || "0") /4; // 250g to 1kg
+  } else {
+    originalPrice = product.originalPrice ? 
+      parseFloat(product.originalPrice.toString()) : 
+      (product.on_offer ? basePrice * 1.2 : basePrice); // If on offer but no original price, estimate
+  }
+
+  const hasDiscount = originalPrice > recalculatedPrice;
+  const discountPercentage = hasDiscount ? Math.round(((originalPrice - recalculatedPrice) / originalPrice) * 100) : 0;
 
   // Get the main product image for CSS transformations
   const getMainProductImage = (product: Product) => {
@@ -473,7 +487,7 @@ export default function ProductDetailPage() {
                 {/* Price Section */}
                 <div className="bg-gray-50 rounded p-3">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg md:text-xl font-semibold text-gray-900">₹{currentPrice}</span>
+                    <span className="text-lg md:text-xl font-semibold text-gray-900">₹{recalculatedPrice}</span>
                     <span className="text-sm text-gray-500 line-through">₹{originalPrice}</span>
                     {hasDiscount && (
                       <span className="bg-green-600 text-white px-1.5 py-0.5 rounded text-xs font-medium">
@@ -517,7 +531,7 @@ export default function ProductDetailPage() {
                     <div className="flex items-center border border-gray-300 rounded">
                       <button
                         onClick={() => handleQuantityChange(-1)}
-                        disabled={quantity <= 2}
+                        disabled={quantity <= 1}
                         className="p-2 md:p-1.5 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px] md:min-h-[32px] flex items-center justify-center"
                       >
                         <Minus className="w-3 h-3" />
