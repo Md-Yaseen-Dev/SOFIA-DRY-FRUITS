@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import { ArrowLeft, Package, Calendar, DollarSign, MapPin, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MockUserAuth } from '@/lib/user-auth';
-import { orders, products } from '@/lib/mock-data';
+import { LocalStorageManager } from '@/lib/mock-data';
 
 export default function OrderDetailPage() {
   const router = useRouter();
@@ -28,23 +28,13 @@ export default function OrderDetailPage() {
 
     setCurrentUser(user);
 
-    // Get orders from localStorage first
+    // Get orders from localStorage using LocalStorageManager
     let allOrders: any[] = [];
-
     if (typeof window !== 'undefined') {
-      const storedOrders = localStorage.getItem('user_orders');
-      if (storedOrders) {
-        allOrders = JSON.parse(storedOrders);
-      }
+      allOrders = LocalStorageManager.getOrders();
     }
-
-    // Fallback to mock data if no stored orders
-    if (allOrders.length === 0) {
-      allOrders = [...orders];
-    }
-
     // Find the order
-    const foundOrder = allOrders.find(o => o.id === orderId && o.user_id === user.id);
+    const foundOrder = allOrders.find((o: any) => o.id === orderId && o.user_id === user.id);
     if (!foundOrder) {
       router.push('/orders');
       return;
@@ -55,7 +45,11 @@ export default function OrderDetailPage() {
   }, [orderId, router]);
 
   const getProductDetails = (productId: string) => {
-    return products.find(p => p.id === productId);
+    if (typeof window !== 'undefined') {
+      const allProducts = LocalStorageManager.getAllProducts();
+      return allProducts.find((p: any) => p.id === productId);
+    }
+    return null;
   };
 
   const formatDate = (dateString: string) => {

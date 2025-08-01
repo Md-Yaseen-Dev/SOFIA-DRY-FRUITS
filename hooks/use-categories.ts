@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { mainCategories } from '@/lib/mock-data';
+import { LocalStorageManager } from '../lib/mock-data';
 import type { Category } from '@/lib/mock-data';
 
 interface CategoriesResponse {
@@ -22,7 +22,8 @@ export function useCategories(mainCategoryId: string | null) {
         let categories: Category[] = [];
         
         if (mainCategoryId) {
-          const mainCategory = mainCategories.find(cat => cat.id === mainCategoryId);
+          const categoryTree = LocalStorageManager.getCategoryTree();
+          const mainCategory = categoryTree.find((cat: any) => cat.id === mainCategoryId);
           categories = mainCategory?.category || [];
         }
 

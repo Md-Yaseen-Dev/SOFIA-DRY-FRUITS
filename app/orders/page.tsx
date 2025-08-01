@@ -7,7 +7,7 @@ import { ArrowLeft, Package, Calendar, DollarSign, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { MockUserAuth } from '@/lib/user-auth';
 import { useOrders } from '@/hooks/use-orders';
-import { products } from '@/lib/mock-data';
+import { LocalStorageManager } from '@/lib/mock-data';
 
 export default function OrdersPage() {
   const router = useRouter();
@@ -68,7 +68,7 @@ export default function OrdersPage() {
   };
 
   const getProductDetails = (productId: string) => {
-    return products.find(p => p.id === productId);
+    return LocalStorageManager.getProducts().find((p: any) => p.id === productId);
   };
 
   const formatDate = (dateString: string) => {

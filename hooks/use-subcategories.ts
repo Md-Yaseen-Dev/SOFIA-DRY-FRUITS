@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { mainCategories } from '@/lib/mock-data';
+import { LocalStorageManager } from '../lib/mock-data';
 import type { SubCategory } from '@/lib/mock-data';
 
 interface SubCategoriesResponse {
@@ -22,8 +22,9 @@ export function useSubCategories(categoryId: string | null) {
 
         if (categoryId) {
           // Find subcategories for the given category
-          mainCategories.forEach(mainCat => {
-            mainCat.category?.forEach(cat => {
+          const categoryTree = LocalStorageManager.getCategoryTree();
+          categoryTree.forEach((mainCat: any) => {
+            mainCat.category?.forEach((cat: any) => {
               if (cat.id === categoryId) {
                 subCategories = cat.sub_category || [];
               }

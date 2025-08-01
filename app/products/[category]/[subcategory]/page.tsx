@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from 'next/navigation';
 import ProductCard from "@/components/product-card";
 import ProductFilters from "@/components/product-filters";
-import { products as mockProducts } from "@/lib/mock-data";
 import { useProducts } from "@/hooks/use-products";
 import { useMainCategories } from "@/hooks/use-main-categories";
 import { Button } from "@/components/ui/button";
+import { LocalStorageManager } from "@/lib/mock-data";
 
 export default function CategorySubcategoryPage() {
   const params = useParams();
@@ -100,7 +100,7 @@ export default function CategorySubcategoryPage() {
   };
 
   // Use API products if available, otherwise fallback to mock data
-  let displayProducts = allProducts.length > 0 ? allProducts : mockProducts;
+  let displayProducts = allProducts.length > 0 ? allProducts : [];
 
   // Filter handlers
   const handleCategoryChange = (categoryId: string, checked: boolean) => {
@@ -135,7 +135,8 @@ export default function CategorySubcategoryPage() {
 
     // Navigate back to main category page when filters are cleared
     if (mainCategoryId) {
-      const mainCategory = mainCategories.find(main => main.id === mainCategoryId);
+      const categoryTree = typeof window !== 'undefined' ? LocalStorageManager.getCategoryTree() : [];
+      const mainCategory = categoryTree.find((main: any) => main.id === mainCategoryId);
       if (mainCategory) {
         const mainCategorySlug = mainCategory.slug || mainCategory.name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
         setTimeout(() => {

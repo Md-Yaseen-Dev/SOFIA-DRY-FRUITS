@@ -2,7 +2,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
 import ProductCard from "@/components/product-card";
-import { products as mockProducts } from "@/lib/mock-data";
+import { Product as mockProducts } from "@/lib/mock-data";
 import { useProducts } from "@/hooks/use-products";
 import { useMainCategories } from "@/hooks/use-main-categories";
 import { useCategories } from "@/hooks/use-categories";
@@ -22,7 +22,7 @@ function FilteredCategoryPageInner() {
   const subCategoryId = searchParams.get('subcategory_id');
 
   // Get data for building the page title
-  const { mainCategories } = useMainCategories();
+  const categoryTree = typeof window !== 'undefined' ? require('../../../lib/mock-data').LocalStorageManager.getCategoryTree() : [];
   const { categories } = useCategories(mainCategoryId);
   const { subCategories } = useSubCategories(categoryId);
 
@@ -67,17 +67,17 @@ function FilteredCategoryPageInner() {
         title = category.name;
       }
     } else if (mainCategoryId) {
-      const mainCategory = mainCategories.find(main => main.id === mainCategoryId);
+      const mainCategory = useMainCategories().mainCategories.find(main => main.id === mainCategoryId);
       if (mainCategory) {
         title = mainCategory.name;
       }
     }
 
     setPageTitle(title);
-  }, [mainCategoryId, categoryId, subCategoryId, mainCategories, categories, subCategories]);
+  }, [mainCategoryId, categoryId, subCategoryId, useMainCategories().mainCategories, categories, subCategories]);
 
   // Use API products if available, otherwise fallback to mock data
-  let displayProducts = allProducts.length > 0 ? allProducts : mockProducts;
+  let displayProducts = allProducts.length > 0 ? allProducts : [];
 
   const hasMore = allProducts.length < (total || 0) && allProducts.length > 0;
   const showLoadMore = hasMore && !isLoading && !isLoadingMore;
@@ -111,7 +111,7 @@ function FilteredCategoryPageInner() {
         <span className="mx-2">/</span>
         {mainCategoryId && (
           <>
-            <span>{mainCategories.find(m => m.id === mainCategoryId)?.name || 'Category'}</span>
+            <span>{useMainCategories().mainCategories.find((m: any) => m.id === mainCategoryId)?.name || 'Category'}</span>
             <span className="mx-2">/</span>
           </>
         )}
@@ -131,7 +131,7 @@ function FilteredCategoryPageInner() {
         <span>Showing products for: </span>
         {mainCategoryId && (
           <span className="inline-block bg-orange-100 text-orange-800 px-2 py-1 rounded-md mr-2">
-            {mainCategories.find(m => m.id === mainCategoryId)?.name || 'Main Category'}
+            {useMainCategories().mainCategories.find((m: any) => m.id === mainCategoryId)?.name || 'Main Category'}
           </span>
         )}
         {categoryId && (

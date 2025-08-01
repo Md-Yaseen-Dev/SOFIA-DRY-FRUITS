@@ -1,4 +1,4 @@
-import { staticFetcher } from './mock-data';
+import { LocalStorageManager } from './mock-data';
 
 // Simulate API responses with static data
 export const fetcher = async (url: string) => {
@@ -6,7 +6,7 @@ export const fetcher = async (url: string) => {
 
   try {
     // Use static data instead of making real API calls
-    const data = await staticFetcher(url);
+    const data = await LocalStorageManager.getAllProducts();
     console.log('Static API Response for', url, ':', data);
     return data;
   } catch (error) {

@@ -3,7 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
-import { brands, eliteBrands } from "@/lib/mock-data";
+import { LocalStorageManager } from "@/lib/mock-data";
 
 export default function BrandShowcase() {
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function BrandShowcase() {
         </div>
 
          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {brands.slice(0, 8).map((brand) => (
+          {LocalStorageManager.getAllProducts().slice(0, 8).map((brand: any) => (
             <Card
               key={brand.id}
               className="p-4 hover:shadow-md transition-shadow cursor-pointer group"

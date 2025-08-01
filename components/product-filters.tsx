@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useMainCategories } from "@/hooks/use-main-categories";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { mainCategories, LocalStorageManager, MainCategory } from "@/lib/mock-data";
+import { LocalStorageManager, MainCategory } from "@/lib/mock-data";
 import { useCategoryTree } from "@/hooks/use-category-tree";
 
 interface ProductFiltersProps {

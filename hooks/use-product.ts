@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { products, LocalStorageManager } from '@/lib/mock-data';
+import { LocalStorageManager } from '@/lib/mock-data';
 import type { Product } from '@/lib/mock-data';
 
 export function useProduct(productId: string | null) {
@@ -23,12 +23,12 @@ export function useProduct(productId: string | null) {
 
           // If not found in localStorage, try products
           if (!product) {
-            product = products.find(p => p.id === productId) || null;
+            product = LocalStorageManager.getAllProducts().find((p: any) => p.id === productId) || null;
           }
 
           // If still not found, try legacy products (convert id to string)
           if (!product) {
-            const legacyProduct = products.find(p => p.id.toString() === productId);
+            const legacyProduct = LocalStorageManager.getAllProducts().find((p: any) => p.id.toString() === productId);
             if (legacyProduct) {
               // Convert legacy product to API format
               product = {

@@ -721,13 +721,10 @@ export default function ProductDetailPage() {
     </div>
   );
 }
-
-// Dynamic Breadcrumb Component
 function DynamicBreadcrumb({ product }: { product: Product }) {
-  const { mainCategories } = useMainCategories();
-
   // Find the main category, category, and subcategory for this product
-  const mainCategory = mainCategories.find(mc => 
+  const categoryTree = typeof window !== 'undefined' ? LocalStorageManager.getCategoryTree() : [];
+  const mainCategory = categoryTree.find(mc => 
     mc.category?.some((cat: any) => 
       cat.sub_category?.some((subcat: any) => subcat.id === product.subcategory_id)
     )

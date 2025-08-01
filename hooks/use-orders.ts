@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { orders as mockOrders } from '@/lib/mock-data';
+import { LocalStorageManager } from '@/lib/mock-data';
 
 export interface Order {
   id: string;

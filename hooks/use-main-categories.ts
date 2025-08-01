@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from 'react';
-import { mainCategories } from '@/lib/mock-data';
+import { LocalStorageManager } from '../lib/mock-data';
 import type { MainCategory } from '@/lib/mock-data';
 
 export function useMainCategories() {
@@ -14,7 +13,7 @@ export function useMainCategories() {
         setIsLoading(true);
         // Simulate network delay for consistency
         await new Promise(resolve => setTimeout(resolve, 300));
-        setData(mainCategories);
+        setData(LocalStorageManager.getCategoryTree());
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to load main categories'));

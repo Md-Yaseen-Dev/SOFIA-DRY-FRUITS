@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from 'next/navigation';
 import ProductCard from "@/components/product-card";
 import ProductFilters from "@/components/product-filters";
-import { products as mockProducts } from "@/lib/mock-data";
 import { useProducts } from "@/hooks/use-products";
 import { useMainCategories } from "@/hooks/use-main-categories";
 import { Button } from "@/components/ui/button";
@@ -118,7 +117,7 @@ export default function SubcategoryPage() {
   };
 
   // Use API products if available, otherwise fallback to mock data
-  let displayProducts = allProducts.length > 0 ? allProducts : mockProducts;
+  let displayProducts = allProducts.length > 0 ? allProducts : [];
 
   // Filter handlers
   const handleCategoryChange = (categoryId: string, checked: boolean) => {
